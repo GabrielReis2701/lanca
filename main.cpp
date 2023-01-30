@@ -134,7 +134,8 @@ void display(void)
 	    	glRotatef(90,1,0,0);
 	    	drawRings(0.4,0.1);
 	    glPopMatrix();
-	    glTranslatef(0,0,-10);
+	    glTranslatef(0,0,-11.6);
+	    glScalef(1,1,2);
 	    glPushMatrix();
 	    	drawCabo();
 	    glPopMatrix();
