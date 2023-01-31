@@ -29,7 +29,7 @@ void initTexture (void)
 	
 	glBindTexture ( GL_TEXTURE_2D, texture_id[1] );
 	image_t temp_image1;
-	tgaLoad  ( "lado_esq.tga", &temp_image1, TGA_FREE | TGA_LOW_QUALITY );
+	tgaLoad  ( "2.tga", &temp_image1, TGA_FREE | TGA_LOW_QUALITY );
 }
 void make_tex(void){
     unsigned char data[256][256][3];
@@ -97,7 +97,7 @@ void drawCabo(){
 //	glTexEnvf(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_MODULATE);
 //	glBindTexture ( GL_TEXTURE_2D, texture_id[4] );
 	gluQuadricDrawStyle(cylinder, GLU_FILL);
-    glBindTexture(GL_TEXTURE_2D, texture_id[4]);
+    glBindTexture(GL_TEXTURE_2D, texture_id[1]);
     //color(0.4434,0.4434,0.4353);
     gluQuadricTexture(cylinder, GL_TRUE);
     gluQuadricNormals(cylinder, GLU_SMOOTH);
@@ -123,8 +123,10 @@ void display(void)
     glRotatef(angle, 0,1,0);
 	glRotatef(anglex, 1,0,0);
 	glRotatef(anglez, 0,0,1);
+	glTranslatef(3,30,3);
+	glRotatef(-90,1,0,0);
     glPushMatrix();
-    glScalef(10,10,10);
+    glScalef(6,6,6);
 		glPushMatrix();
 	    drawPonta();
 	    glPopMatrix();
@@ -133,12 +135,24 @@ void display(void)
 			color(1,0,0);
 	    	glRotatef(90,1,0,0);
 	    	drawRings(0.4,0.1);
+	    	drawRings(0.4,0.2);
 	    glPopMatrix();
 	    glTranslatef(0,0,-11.6);
 	    glScalef(1,1,2);
 	    glPushMatrix();
 	    	drawCabo();
 	    glPopMatrix();
+	    glTranslatef(0,0,6);
+	    glPushMatrix();
+	    	color(0.8,0.8,0.7);
+	    	drawCircle(0.5,1);
+	    glPopMatrix();
+	    glTranslatef(0,0,-6);
+	    glPushMatrix();
+	    	color(0,0,0);
+	    	drawCircle(0.4,1);
+	    glPopMatrix();
+	    color(1,0,0);
 	glPopMatrix();
 	//Executa os comandos OpenGL 
 	glFlush();
